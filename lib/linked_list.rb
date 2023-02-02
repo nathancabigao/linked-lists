@@ -71,7 +71,7 @@ class LinkedList
   # Sets a new tail when popping from list
   def set_new_tail
     new_tail = at(size - 2)
-    new_tail.next_node = nil?
+    new_tail.next_node = nil
     @tail = new_tail
   end
 

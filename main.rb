@@ -15,7 +15,29 @@ puts test_node.value
 puts "\nCreating a LinkedList. Here is its representation after initalization:"
 test_ll = LinkedList.new
 puts test_ll
-puts "Appending value 56 and then prepending 'hello':"
+
+# Test #append and #prepend
+puts "\nAppending value 56 and then prepending 'hello':"
 test_ll.append(56)
 test_ll.prepend('hello')
+puts test_ll
+
+# Test #size, #head, and #tail
+puts "\nThe size of the LinkedList is #{test_ll.size}."
+puts "The head is #{test_ll.head.value}"
+puts "The tail is #{test_ll.tail.value}"
+
+# Test at(index)
+puts "\nAdding more elements and testing at with a random number..."
+test_ll.append(69)
+test_ll.append('pop_me')
+test_ll.prepend('o/')
+test_ll.prepend([0, 1, 3])
+random_index = rand(test_ll.size)
+puts test_ll
+puts "The value at index #{random_index} is #{test_ll.at(random_index).value}."
+
+# Test pop
+puts "\nPopping an element and printing the result..."
+puts "We have popped #{test_ll.pop.value} and the LinkedList is now:"
 puts test_ll
