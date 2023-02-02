@@ -16,6 +16,14 @@ class LinkedList
     @tail.next_node = new_node unless @tail.nil?
     @tail = next_node
   end
+
+  # Creates a new node with value, adds to start of list
+  def prepend(value)
+    new_node = Node.new(value)
+    @tail = new_node if @tail.nil?
+    new_node.next_node = @head unless @head.nil?
+    @head = new_node
+  end
 end
 
 # Class for creating Nodes to be used in LinkedList
