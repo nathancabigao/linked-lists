@@ -80,6 +80,14 @@ class LinkedList
     end
     false
   end
+
+  # Returns the index of the node containing value, nil if not
+  def find(value)
+    (0..size - 1).each do |index|
+      return index if at(index).value == value
+    end
+    nil
+  end
 end
 
 # Class for creating Nodes to be used in LinkedList
