@@ -11,7 +11,6 @@ class LinkedList
     @tail = nil
   end
 
-  # Creates a new node with value, adds to end of list
   def append(value)
     new_node = Node.new(value)
     @head = new_node if @head.nil?
@@ -19,7 +18,6 @@ class LinkedList
     @tail = new_node
   end
 
-  # Creates a new node with value, adds to start of list
   def prepend(value)
     new_node = Node.new(value)
     @tail = new_node if @tail.nil?
@@ -27,7 +25,6 @@ class LinkedList
     @head = new_node
   end
 
-  # Returns the number of nodes in the list
   def size
     return 0 if @head.nil?
 
@@ -40,7 +37,6 @@ class LinkedList
     size
   end
 
-  # Returns the node at the given index
   def at(index)
     return @head if index.zero?
     return @tail if index == size - 1
@@ -54,7 +50,6 @@ class LinkedList
     current_node
   end
 
-  # Removes the last element from the list, return the node
   def pop
     popped_node = @tail
     return popped_node if @tail.nil?
@@ -68,14 +63,12 @@ class LinkedList
     popped_node
   end
 
-  # Sets a new tail when popping from list
   def set_new_tail
     new_tail = at(size - 2)
     new_tail.next_node = nil
     @tail = new_tail
   end
 
-  # returns a boolean indicating if the given value is in the list
   def contains?(value)
     (0..size - 1).each do |index|
       return true if at(index).value == value
@@ -83,7 +76,6 @@ class LinkedList
     false
   end
 
-  # Returns the index of the node containing value, nil if not
   def find(value)
     (0..size - 1).each do |index|
       return index if at(index).value == value
@@ -91,19 +83,17 @@ class LinkedList
     nil
   end
 
-  # Inserts a new node with provided value at given index
   def insert_at(value, index)
     return 'Invalid index, out of bounds' if index >= size
 
     new_node = Node.new(value)
-    # -1 if insert at head. The index of the prev index otherwise.
+    # -1 if inserting at head, the index of the prev index otherwise.
     before = index.zero? ? -1 : at(index - 1)
-    # -1 if insert at end. The index of next index otherwise.
+    # -1 if inserting at end, the index of current index otherwise.
     after = index == size - 1 ? -1 : at(index)
     reassign_after_insert(before, after, new_node)
   end
 
-  # Reassigns nexts, head, and tail after an insert depending on the case.
   def reassign_after_insert(before, after, new_node)
     if before == -1
       new_node.next_node = @head
@@ -117,7 +107,6 @@ class LinkedList
     end
   end
 
-  # Removes the node at the given index
   def remove_at(index)
     return 'Invalid index, out of bounds' if index >= size
 
@@ -130,21 +119,17 @@ class LinkedList
   end
 
   def reassign_after_remove(before, current)
-    # if head, set head as the current head's next node.
     if before == -1
       @head = @head.next_node
-    # elsif tail, set before as the new tail
     elsif current == -1
       @tail = before
       @tail.next_node = nil
-    # else, link before.next_node as after
     else
       before.next_node = current.next_node
       p before.next_node.value
     end
   end
 
-  # Represent LinkedList object as string, for printing
   def to_s
     s = ''
     return 'nil' if size.zero?
