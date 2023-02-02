@@ -72,6 +72,14 @@ class LinkedList
     new_tail.next_node = nil?
     @tail = new_tail
   end
+
+  # returns a boolean indicating if the given value is in the list
+  def contains?(value)
+    (0..size - 1).each do |index|
+      return true if at(index).value == value
+    end
+    false
+  end
 end
 
 # Class for creating Nodes to be used in LinkedList
