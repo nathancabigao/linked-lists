@@ -2,9 +2,19 @@
 
 # Class for creating instances of LinkedLists
 class LinkedList
+  attr_accessor :head, :tail
+
   def initialize
     @head = nil
     @tail = nil
+  end
+
+  # Creates a new node with value, adds to end of list
+  def append(value)
+    new_node = Node.new(value)
+    @head = new_node if @head.nil?
+    @tail.next_node = new_node unless @tail.nil?
+    @tail = next_node
   end
 end
 
