@@ -88,6 +88,16 @@ class LinkedList
     end
     nil
   end
+
+  # Represent LinkedList object as string, for printing
+  def to_s
+    s = ''
+    return 'nil' if size.zero?
+
+    (0..size - 1).each { s << "( #{at(index).value} ) -> " }
+    s << 'nil'
+    s
+  end
 end
 
 # Class for creating Nodes to be used in LinkedList
