@@ -58,7 +58,20 @@ puts "Inserting 'end' at last index:"
 test_ll.insert_at('end', test_ll.size - 1)
 puts test_ll
 puts "Inserting 'middle' at a middle index:"
-test_ll.insert_at('middle', test_ll.size/2)
+test_ll.insert_at('middle', test_ll.size / 2)
+puts test_ll
+
+# Test remove_at with edge cases (0 and last index) along with middle
+puts "\nTesting remove_at with edge cases included."
+puts 'Removing index 0:'
+test_ll.remove_at(0)
+puts test_ll
+puts 'Removing last index'
+test_ll.remove_at(test_ll.size - 1)
+puts test_ll
+puts "Removing 'middle'"
+puts test_ll.find('middle')
+test_ll.remove_at(test_ll.find('middle'))
 puts test_ll
 
 puts "\nTesting complete."

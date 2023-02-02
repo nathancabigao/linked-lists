@@ -117,6 +117,33 @@ class LinkedList
     end
   end
 
+  # Removes the node at the given index
+  def remove_at(index)
+    return 'Invalid index, out of bounds' if index >= size
+
+    # -1 if removing head. The index of the prev index otherwise.
+    before = index.zero? ? -1 : at(index - 1)
+    # -1 if removing tail. The index of current index otherwise.
+    current = index == size - 1 ? -1 : at(index)
+
+    reassign_after_remove(before, current)
+  end
+
+  def reassign_after_remove(before, current)
+    # if head, set head as the current head's next node.
+    if before == -1
+      @head = @head.next_node
+    # elsif tail, set before as the new tail
+    elsif current == -1
+      @tail = before
+      @tail.next_node = nil
+    # else, link before.next_node as after
+    else
+      before.next_node = current.next_node
+      p before.next_node.value
+    end
+  end
+
   # Represent LinkedList object as string, for printing
   def to_s
     s = ''
