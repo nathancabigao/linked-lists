@@ -2,6 +2,10 @@
 
 # Class for creating instances of LinkedLists
 class LinkedList
+  def initialize
+    @head = nil
+    @tail = nil
+  end
 end
 
 # Class for creating Nodes to be used in LinkedList
