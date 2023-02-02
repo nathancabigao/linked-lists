@@ -51,6 +51,27 @@ class LinkedList
     end
     current_node
   end
+
+  # Removes the last element from the list, return the node
+  def pop
+    popped_node = @tail
+    return popped_node if @tail.nil?
+
+    if size == 1
+      @head = nil
+      @tail = nil
+    else
+      set_new_tail
+    end
+    popped_node
+  end
+
+  # Sets a new tail when popping from list
+  def set_new_tail
+    new_tail = at(size - 2)
+    new_tail.next_node = nil?
+    @tail = new_tail
+  end
 end
 
 # Class for creating Nodes to be used in LinkedList
