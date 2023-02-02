@@ -41,3 +41,12 @@ puts "The value at index #{random_index} is #{test_ll.at(random_index).value}."
 puts "\nPopping an element and printing the result..."
 puts "We have popped #{test_ll.pop.value} and the LinkedList is now:"
 puts test_ll
+
+# Test contains? and find
+puts "\nWe will test contains? and find by checking for values 'o/' and 'pop_me'."
+puts "contains?('o/'): #{test_ll.contains?('o/')}"
+puts "contains?('pop_me'): #{test_ll.contains?('pop_me')}"
+puts "find('o/'): #{test_ll.find('o/')}"
+puts "find('pop_me'): #{test_ll.find('pop_me')}"
+
+puts "\nTesting complete."
