@@ -25,16 +25,31 @@ class LinkedList
     @head = new_node
   end
 
+  # Returns the number of nodes in the list
   def size
     return 0 if @head.nil?
 
-    curr = @head
+    current_node = @head
     size = 0
-    until curr.nil?
+    until current_node.nil?
       size += 1
-      curr = curr.next_node
+      current_node = current_node.next_node
     end
     size
+  end
+
+  # Returns the node at the given index
+  def at(index)
+    return @head if index.zero?
+    return @tail if index == size - 1
+
+    current_node = @head
+    current_index = 0
+    until current_index == index
+      current_node = current_node.next_node
+      current_index += 1
+    end
+    current_node
   end
 end
 
