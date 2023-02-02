@@ -24,6 +24,18 @@ class LinkedList
     new_node.next_node = @head unless @head.nil?
     @head = new_node
   end
+
+  def size
+    return 0 if @head.nil?
+
+    curr = @head
+    size = 0
+    until curr.nil?
+      size += 1
+      curr = curr.next_node
+    end
+    size
+  end
 end
 
 # Class for creating Nodes to be used in LinkedList
