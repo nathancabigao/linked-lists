@@ -91,6 +91,32 @@ class LinkedList
     nil
   end
 
+  # Inserts a new node with provided value at given index
+  def insert_at(value, index)
+    return 'Invalid index, out of bounds' if index >= size
+
+    new_node = Node.new(value)
+    # -1 if insert at head. The index of the prev index otherwise.
+    before = index.zero? ? -1 : at(index - 1)
+    # -1 if insert at end. The index of next index otherwise.
+    after = index == size - 1 ? -1 : at(index)
+    reassign_after_insert(before, after, new_node)
+  end
+
+  # Reassigns nexts, head, and tail after an insert depending on the case.
+  def reassign_after_insert(before, after, new_node)
+    if before == -1
+      new_node.next_node = @head
+      @head = new_node
+    elsif after == -1
+      @tail.next_node = new_node
+      @tail = new_node
+    else
+      before.next_node = new_node
+      new_node.next_node = after
+    end
+  end
+
   # Represent LinkedList object as string, for printing
   def to_s
     s = ''

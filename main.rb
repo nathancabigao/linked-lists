@@ -49,4 +49,16 @@ puts "contains?('pop_me'): #{test_ll.contains?('pop_me')}"
 puts "find('o/'): #{test_ll.find('o/')}"
 puts "find('pop_me'): #{test_ll.find('pop_me')}"
 
+# Test insert_at() with edge cases (0 and last index) along with middle
+puts "\nTesting insert_at with edge cases included."
+puts "Inserting 'beginning' at index 0:"
+test_ll.insert_at('beginning', 0)
+puts test_ll
+puts "Inserting 'end' at last index:"
+test_ll.insert_at('end', test_ll.size - 1)
+puts test_ll
+puts "Inserting 'middle' at a middle index:"
+test_ll.insert_at('middle', test_ll.size/2)
+puts test_ll
+
 puts "\nTesting complete."
