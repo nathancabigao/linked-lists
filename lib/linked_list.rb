@@ -16,7 +16,7 @@ class LinkedList
     new_node = Node.new(value)
     @head = new_node if @head.nil?
     @tail.next_node = new_node unless @tail.nil?
-    @tail = next_node
+    @tail = new_node
   end
 
   # Creates a new node with value, adds to start of list
@@ -96,8 +96,7 @@ class LinkedList
     s = ''
     return 'nil' if size.zero?
 
-    (0..size - 1).each { s << "( #{at(index).value} ) -> " }
-    s << 'nil'
-    s
+    (0..size - 1).each { |index| s += "( #{at(index).value} ) -> " }
+    s += 'nil'
   end
 end
